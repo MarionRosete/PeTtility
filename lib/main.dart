@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
             body: Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("assets/img.png"),
+                    image: AssetImage("assets/5.jpg"),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -72,12 +72,7 @@ class MyApp extends StatelessWidget {
                           textColor: Colors.white,
                           color: Colors.blue,
                           child: Text('Guest'),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Signin()));
-                          },
+                          onPressed: () {},
                         ))
                   ],
                 ))));
@@ -93,7 +88,7 @@ class Create extends StatelessWidget {
           body: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/img.png"),
+                  image: AssetImage("assets/5.jpg"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -116,6 +111,17 @@ class Create extends StatelessWidget {
                         'Create Account',
                         style: TextStyle(fontSize: 40, fontFamily: 'Caveat'),
                       )),
+                  Container(
+                    height: 120.0,
+                    width: 120.0,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/pup.jpg'),
+                        fit: BoxFit.fill,
+                      ),
+                      shape: BoxShape.circle,
+                    ),
+                  ),
                   Container(
                     padding: EdgeInsets.all(10),
                     child: TextField(
@@ -153,12 +159,28 @@ class Create extends StatelessWidget {
                       ),
                     ),
                   ),
-                  FlatButton(
-                    onPressed: () {
-                      //forgot password screen
-                    },
-                    textColor: Colors.blue,
-                    child: Text('Forgot Password'),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Pet Type',
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Breed',
+                      ),
+                    ),
+                  ),
+                  Container(
+                    child: Pets(),
+                    height: 50,
+                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                   ),
                   Container(
                       height: 50,
@@ -166,21 +188,24 @@ class Create extends StatelessWidget {
                       child: RaisedButton(
                         textColor: Colors.white,
                         color: Colors.blue,
-                        child: Text('Login'),
+                        child: Text('Create Account'),
                         onPressed: () {},
                       )),
                   Container(
                       child: Row(
                     children: <Widget>[
-                      Text('Does not have account?'),
+                      Text('Have an Account?'),
                       FlatButton(
                         textColor: Colors.blue,
                         child: Text(
-                          'Sign up',
+                          'Sign in',
                           style: TextStyle(fontSize: 20),
                         ),
                         onPressed: () {
-                          //signup screen
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Signin()));
                         },
                       )
                     ],
@@ -201,7 +226,7 @@ class Signin extends StatelessWidget {
           body: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/img.png"),
+                  image: AssetImage("assets/5.jpg"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -270,7 +295,10 @@ class Signin extends StatelessWidget {
                           style: TextStyle(fontSize: 20),
                         ),
                         onPressed: () {
-                          //signup screen
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Create()));
                         },
                       )
                     ],
@@ -278,6 +306,66 @@ class Signin extends StatelessWidget {
                   ))
                 ],
               ))),
+    );
+  }
+}
+
+class Pets extends StatefulWidget {
+  final int numPets;
+  Pets({this.numPets});
+
+  @override
+  _Pets createState() => _Pets();
+}
+
+class _Pets extends State<Pets> {
+  int dropDownValue = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: DropdownButton(
+        value: dropDownValue,
+        onChanged: (int newVal) {
+          setState(() {
+            dropDownValue = newVal;
+          });
+        },
+        items: [
+          DropdownMenuItem(
+            value: 0,
+            child: Text('Select Pet '),
+          ),
+          DropdownMenuItem(
+            value: 1,
+            child: Text('Dogs'),
+          ),
+          DropdownMenuItem(
+            value: 2,
+            child: Text('Cat'),
+          ),
+          DropdownMenuItem(
+            value: 3,
+            child: Text('Chicken'),
+          ),
+          DropdownMenuItem(
+            value: 4,
+            child: Text('Pig'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ModeSelection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          child: Pets(),
+        ),
+      ),
     );
   }
 }
