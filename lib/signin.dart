@@ -14,6 +14,7 @@ class Signin extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
+              padding: const EdgeInsets.all(18.0),
               child: ListView(
                 children: <Widget>[
                   Container(
@@ -30,36 +31,52 @@ class Signin extends StatelessWidget {
                   Container(
                       alignment: Alignment.center,
                       child: Text(
+                        'Welcome',
+                        style: TextStyle(fontSize: 20, fontFamily: 'Caveat'),
+                      )),
+                  Container(
+                      alignment: Alignment.center,
+                      child: Text(
                         'Sign in',
                         style: TextStyle(fontSize: 40, fontFamily: 'Caveat'),
                       )),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'User Name',
-                      ),
-                    ),
+                  SizedBox(
+                    height: 40.0,
+                  ),
+                  Text("User Name",
+                      style: TextStyle(fontSize: 25, fontFamily: 'Caveat')),
+                  SizedBox(
+                    height: 10.0,
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                      child: TextField(
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: "Enter User Name"))),
+                  SizedBox(
+                    height: 5.0,
+                  ),
+                  Text("Password",
+                      style: TextStyle(fontSize: 25, fontFamily: 'Caveat')),
+                  Container(
                     child: TextField(
                       obscureText: true,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Password',
-                      ),
+                          border: OutlineInputBorder(),
+                          hintText: "Enter Password"),
                     ),
                   ),
-                  FlatButton(
-                    onPressed: () {
-                      //forgot password screen
-                    },
-                    textColor: Colors.blue,
-                    child: Text('Forgot Password'),
-                  ),
                   Container(
+                      alignment: Alignment.center,
+                      child: FlatButton(
+                        onPressed: () {
+                          //forgot password screen
+                        },
+                        textColor: Colors.blue,
+                        child: Text('Forgot Password'),
+                      )),
+                  Container(
+                      alignment: Alignment.center,
                       height: 50,
                       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                       child: RaisedButton(

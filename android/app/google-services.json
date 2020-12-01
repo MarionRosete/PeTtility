@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "313111283767",
+    "firebase_url": "https://pettility.firebaseio.com",
+    "project_id": "pettility",
+    "storage_bucket": "pettility.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:313111283767:android:13773821b89f192d3517b2",
+        "android_client_info": {
+          "package_name": "com.example.PETtility2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "313111283767-jo6bo73nb8e684m9ml2ur6gmrjvdp26k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfkOZy-ts699rQx4UMi67otz27mTrSSwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "313111283767-jo6bo73nb8e684m9ml2ur6gmrjvdp26k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

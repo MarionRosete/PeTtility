@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'signin.dart';
+import 'util/dropdown.dart';
+import 'util/Filepicker.dart';
 
 class Create extends StatelessWidget {
   @override
@@ -30,79 +32,89 @@ class Create extends StatelessWidget {
                   Container(
                       alignment: Alignment.center,
                       child: Text(
+                        'Welcome',
+                        style: TextStyle(fontSize: 20, fontFamily: 'Caveat'),
+                      )),
+                  Container(
+                      alignment: Alignment.center,
+                      child: Text(
                         'Create Account',
                         style: TextStyle(fontSize: 40, fontFamily: 'Caveat'),
                       )),
-                  Container(
-                    height: 120.0,
-                    width: 120.0,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/pup.jpg'),
-                        fit: BoxFit.fill,
-                      ),
-                      shape: BoxShape.circle,
+                  SizedBox(
+                    height: 40.0,
+                  ),
+                  CircleAvatar(
+                    backgroundImage: AssetImage("assets/pet.jpg"),
+                    radius: 80,
+                    child: InkWell(
+                      onTap: () {
+                        Picker();
+                      },
                     ),
                   ),
+                  Text("User Name",
+                      style: TextStyle(fontSize: 25, fontFamily: 'Caveat')),
                   Container(
                     padding: EdgeInsets.all(10),
                     child: TextField(
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        labelText: 'User Name',
+                        hintText: "Enter User Name",
                       ),
                     ),
                   ),
+                  Text("Password",
+                      style: TextStyle(fontSize: 25, fontFamily: 'Caveat')),
                   Container(
                     padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                     child: TextField(
                       obscureText: true,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        labelText: 'Password',
+                        hintText: 'Enter Password',
                       ),
                     ),
                   ),
+                  Text("Pet Name",
+                      style: TextStyle(fontSize: 25, fontFamily: 'Caveat')),
                   Container(
                     padding: EdgeInsets.all(10),
                     child: TextField(
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        labelText: 'Pet Name',
+                        hintText: "Enter Pet Name",
                       ),
                     ),
                   ),
+                  Text("Age",
+                      style: TextStyle(fontSize: 25, fontFamily: 'Caveat')),
                   Container(
                     padding: EdgeInsets.all(10),
                     child: TextField(
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        labelText: 'Age',
+                        hintText: "Enter Age",
                       ),
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Pet Type',
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Breed',
-                      ),
-                    ),
-                  ),
+                  Text("Pet Type:",
+                      style: TextStyle(fontSize: 25, fontFamily: 'Caveat')),
                   Container(
                     child: Pets(),
                     height: 50,
                     padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                  ),
+                  Text("Pet Breed",
+                      style: TextStyle(fontSize: 25, fontFamily: 'Caveat')),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: "Ex. aspin,",
+                      ),
+                    ),
                   ),
                   Container(
                       height: 50,
@@ -135,67 +147,6 @@ class Create extends StatelessWidget {
                   ))
                 ],
               ))),
-    );
-  }
-}
-
-//For Drop down list
-class Pets extends StatefulWidget {
-  final int numPets;
-  Pets({this.numPets});
-
-  @override
-  _Pets createState() => _Pets();
-}
-
-class _Pets extends State<Pets> {
-  int dropDownValue = 0;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: DropdownButton(
-        value: dropDownValue,
-        onChanged: (int newVal) {
-          setState(() {
-            dropDownValue = newVal;
-          });
-        },
-        items: [
-          DropdownMenuItem(
-            value: 0,
-            child: Text('Select Pet '),
-          ),
-          DropdownMenuItem(
-            value: 1,
-            child: Text('Dogs'),
-          ),
-          DropdownMenuItem(
-            value: 2,
-            child: Text('Cat'),
-          ),
-          DropdownMenuItem(
-            value: 3,
-            child: Text('Chicken'),
-          ),
-          DropdownMenuItem(
-            value: 4,
-            child: Text('Pig'),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class ModeSelection extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Container(
-          child: Pets(),
-        ),
-      ),
     );
   }
 }
