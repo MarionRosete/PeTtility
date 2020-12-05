@@ -15,7 +15,7 @@ class _SigninState extends State<Signin> {
           body: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/5.jpg"),
+                  image: AssetImage("assets/UI.jpg"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -25,7 +25,7 @@ class _SigninState extends State<Signin> {
                   Container(
                       alignment: Alignment.center,
                       child: Text(
-                        'PetTilitys',
+                        'PetTility',
                         style: TextStyle(
                             fontFamily: 'Caveat',
                             decoration: TextDecoration.underline,

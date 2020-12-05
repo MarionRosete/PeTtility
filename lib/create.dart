@@ -20,7 +20,7 @@ class _CreateState extends State<Create> {
           body: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/5.jpg"),
+                  image: AssetImage("assets/UI.jpg"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -64,13 +64,16 @@ class _CreateState extends State<Create> {
                   ),
                   Text("User Name",
                       style: TextStyle(fontSize: 25, fontFamily: 'Caveat')),
-                  TextField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: "Enter User Name"),
-                    onChanged: (value) {
-                      usersProvider.userName(value);
-                    },
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: "Enter User Name"),
+                      onChanged: (value) {
+                        usersProvider.userName(value);
+                      },
+                    ),
                   ),
                   Text("Password",
                       style: TextStyle(fontSize: 25, fontFamily: 'Caveat')),
