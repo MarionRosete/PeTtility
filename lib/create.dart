@@ -1,11 +1,19 @@
+import 'package:PETtility2/providers/users_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'signin.dart';
-import 'util/dropdown.dart';
-import 'util/Filepicker.dart';
+import 'functions/dropdown.dart';
+import 'functions/Filepicker.dart';
 
-class Create extends StatelessWidget {
+class Create extends StatefulWidget {
+  @override
+  _CreateState createState() => _CreateState();
+}
+
+class _CreateState extends State<Create> {
   @override
   Widget build(BuildContext context) {
+    final usersProvider = Provider.of<UsersProvider>(context);
     return MaterialApp(
       home: Scaffold(
           backgroundColor: Colors.white,
@@ -17,6 +25,7 @@ class Create extends StatelessWidget {
                 ),
               ),
               child: ListView(
+                padding: EdgeInsets.fromLTRB(40, 40, 40, 40),
                 children: <Widget>[
                   Container(
                       alignment: Alignment.center,
@@ -55,48 +64,53 @@ class Create extends StatelessWidget {
                   ),
                   Text("User Name",
                       style: TextStyle(fontSize: 25, fontFamily: 'Caveat')),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    child: TextField(
-                      decoration: InputDecoration(
+                  TextField(
+                    decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: "Enter User Name",
-                      ),
-                    ),
+                        hintText: "Enter User Name"),
+                    onChanged: (value) {
+                      usersProvider.userName(value);
+                    },
                   ),
                   Text("Password",
                       style: TextStyle(fontSize: 25, fontFamily: 'Caveat')),
                   Container(
-                    padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    padding: EdgeInsets.all(10),
                     child: TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Enter Password',
-                      ),
-                    ),
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: 'Enter Password',
+                        ),
+                        onChanged: (value) {
+                          usersProvider.passWord(value);
+                        }),
                   ),
                   Text("Pet Name",
                       style: TextStyle(fontSize: 25, fontFamily: 'Caveat')),
                   Container(
                     padding: EdgeInsets.all(10),
                     child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: "Enter Pet Name",
-                      ),
-                    ),
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: "Enter Pet Name",
+                        ),
+                        onChanged: (value) {
+                          usersProvider.petName(value);
+                        }),
                   ),
                   Text("Age",
                       style: TextStyle(fontSize: 25, fontFamily: 'Caveat')),
                   Container(
                     padding: EdgeInsets.all(10),
                     child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: "Enter Age",
-                      ),
-                    ),
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: "Enter Age",
+                        ),
+                        onChanged: (value) {
+                          usersProvider.agE(value);
+                        }),
                   ),
                   Text("Pet Type:",
                       style: TextStyle(fontSize: 25, fontFamily: 'Caveat')),
@@ -110,11 +124,13 @@ class Create extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.all(10),
                     child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: "Ex. aspin,",
-                      ),
-                    ),
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: "Ex. aspin,",
+                        ),
+                        onChanged: (value) {
+                          usersProvider.petBreed(value);
+                        }),
                   ),
                   Container(
                       height: 50,
@@ -123,7 +139,9 @@ class Create extends StatelessWidget {
                         textColor: Colors.white,
                         color: Colors.blue,
                         child: Text('Create Account'),
-                        onPressed: () {},
+                        onPressed: () {
+                          usersProvider.saveUsers();
+                        },
                       )),
                   Container(
                       child: Row(

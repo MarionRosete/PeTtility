@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'create.dart';
 
-class Signin extends StatelessWidget {
+class Signin extends StatefulWidget {
+  @override
+  _SigninState createState() => _SigninState();
+}
+
+class _SigninState extends State<Signin> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,7 +25,7 @@ class Signin extends StatelessWidget {
                   Container(
                       alignment: Alignment.center,
                       child: Text(
-                        'PetTility',
+                        'PetTilitys',
                         style: TextStyle(
                             fontFamily: 'Caveat',
                             decoration: TextDecoration.underline,
@@ -96,10 +101,8 @@ class Signin extends StatelessWidget {
                           style: TextStyle(fontSize: 20),
                         ),
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Create()));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Create()));
                         },
                       )
                     ],
