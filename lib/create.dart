@@ -1,3 +1,4 @@
+import 'package:PETtility2/created_users.dart';
 import 'package:PETtility2/providers/users_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -144,6 +145,11 @@ class _CreateState extends State<Create> {
                         child: Text('Create Account'),
                         onPressed: () {
                           usersProvider.saveUsers();
+                          Navigator.of(context).pop();
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Created()));
                         },
                       )),
                   Container(

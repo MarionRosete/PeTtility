@@ -1,3 +1,5 @@
+
+
 class Users {
   final String userID;
   final String username;
@@ -26,4 +28,17 @@ class Users {
       'petbreed': petbreed
     };
   }
+
+  Users.fromFirestore(Map<String, dynamic> firestore)
+      : userID = firestore['userID'],
+        username = firestore['username'],
+        password = firestore['password'],
+        petname = firestore['petname'],
+        age = firestore['age'],
+        pet = firestore['pet'],
+        petbreed = firestore['petbreed'];
+
+  
+
+  
 }

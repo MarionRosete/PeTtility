@@ -1,3 +1,4 @@
+import 'package:PETtility2/services/firestore_services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'Signin.dart';
@@ -14,9 +15,10 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<UsersProvider>(
-        create: (context) => UsersProvider(),
-        lazy: false,
-        child: MaterialApp(title: 'PETtility', home: Signin()));
+    final firestoreService = FirestoreServices();
+    return MultiProvider(providers: [
+      ChangeNotifierProvider(create: (context) => UsersProvider(), lazy: false),
+      StreamProvider(create: (context) => firestoreService.getUsers())
+    ], child: MaterialApp(title: 'PETtility', home: Signin()));
   }
 }
